@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		373CD5C02187B5CF007FDA1A /* SystemConfigurationExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 373CD5BE2187B5CF007FDA1A /* SystemConfigurationExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		379355E02188CA62007A5641 /* SCEReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 379355DE2188CA62007A5641 /* SCEReachability.h */; };
+		379355E12188CA62007A5641 /* SCEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 379355DF2188CA62007A5641 /* SCEReachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		373CD5BB2187B5CF007FDA1A /* SystemConfigurationExt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SystemConfigurationExt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		373CD5BE2187B5CF007FDA1A /* SystemConfigurationExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemConfigurationExt.h; sourceTree = "<group>"; };
 		373CD5BF2187B5CF007FDA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		379355DE2188CA62007A5641 /* SCEReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCEReachability.h; sourceTree = "<group>"; };
+		379355DF2188CA62007A5641 /* SCEReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCEReachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				373CD5BE2187B5CF007FDA1A /* SystemConfigurationExt.h */,
+				379355DE2188CA62007A5641 /* SCEReachability.h */,
+				379355DF2188CA62007A5641 /* SCEReachability.m */,
 				373CD5BF2187B5CF007FDA1A /* Info.plist */,
 			);
 			path = SystemConfigurationExt;
@@ -60,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				373CD5C02187B5CF007FDA1A /* SystemConfigurationExt.h in Headers */,
+				379355E02188CA62007A5641 /* SCEReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379355E12188CA62007A5641 /* SCEReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
