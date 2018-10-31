@@ -12,3 +12,4 @@ FOUNDATION_EXPORT double SystemConfigurationExtVersionNumber;
 FOUNDATION_EXPORT const unsigned char SystemConfigurationExtVersionString[];
 
 #import <SystemConfigurationExt/SCEReachability.h>
+#import <SystemConfigurationExt/SCECaptiveNetwork.h>
