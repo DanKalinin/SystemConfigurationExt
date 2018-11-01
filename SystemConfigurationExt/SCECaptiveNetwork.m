@@ -95,7 +95,7 @@
 #pragma mark - Accessors
 
 - (NSArray<NSString *> *)supportedInterfaces {
-    NSArray<NSString *> *interfaces = (__bridge_transfer NSArray<NSString *> *)CNCopySupportedInterfaces();
+    NSArray *interfaces = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
     return interfaces;
 }
 
