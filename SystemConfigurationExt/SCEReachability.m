@@ -24,7 +24,7 @@
 
 void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info) {
     SCEReachability *reachability = (__bridge SCEReachability *)info;
-    [reachability.delegates SCEReachabilityDidUpdateFlags:reachability];
+    [reachability.delegates sceReachabilityDidUpdateFlags:reachability];
 }
 
 @dynamic delegates;
@@ -93,33 +93,33 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
 - (void)setCallback:(SCNetworkReachabilityCallBack)callout context:(SCNetworkReachabilityContext)context {
     Boolean success = SCNetworkReachabilitySetCallback(self.target, callout, &context);
     if (success) {
-        NSError.threadError = nil;
+        NSError.nseThreadError = nil;
     } else {
-        NSError.threadError = (__bridge_transfer NSError *)SCCopyLastError();
+        NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
 }
 
 - (void)scheduleWithRunLoop:(NSRunLoop *)runLoop runLoopMode:(NSRunLoopMode)runLoopMode {
     Boolean success = SCNetworkReachabilityScheduleWithRunLoop(self.target, runLoop.getCFRunLoop, (__bridge CFStringRef)runLoopMode);
     if (success) {
-        NSError.threadError = nil;
+        NSError.nseThreadError = nil;
     } else {
-        NSError.threadError = (__bridge_transfer NSError *)SCCopyLastError();
+        NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
 }
 
 - (void)unscheduleFromRunLoop:(NSRunLoop *)runLoop runLoopMode:(NSRunLoopMode)runLoopMode {
     Boolean success = SCNetworkReachabilityUnscheduleFromRunLoop(self.target, runLoop.getCFRunLoop, (__bridge CFStringRef)runLoopMode);
     if (success) {
-        NSError.threadError = nil;
+        NSError.nseThreadError = nil;
     } else {
-        NSError.threadError = (__bridge_transfer NSError *)SCCopyLastError();
+        NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
 }
 
 - (void)startMonitoring {
     [self setCallback:SCEReachabilityCallBack context:self.context];
-    if (NSError.threadError) {
+    if (NSError.nseThreadError) {
     } else {
         [self scheduleWithRunLoop:self.loop runLoopMode:NSDefaultRunLoopMode];
     }
@@ -127,7 +127,7 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
 
 - (void)stopMonitoring {
     [self setCallback:NULL context:self.context];
-    if (NSError.threadError) {
+    if (NSError.nseThreadError) {
     } else {
         [self unscheduleFromRunLoop:self.loop runLoopMode:NSDefaultRunLoopMode];
     }
@@ -139,9 +139,9 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     Boolean success = SCNetworkReachabilitySetDispatchQueue(self.target, dispatchQueue);
     if (success) {
         _dispatchQueue = dispatchQueue;
-        NSError.threadError = nil;
+        NSError.nseThreadError = nil;
     } else {
-        NSError.threadError = (__bridge_transfer NSError *)SCCopyLastError();
+        NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
 }
 
@@ -149,9 +149,9 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     SCNetworkReachabilityFlags flags = 0;
     Boolean success = SCNetworkReachabilityGetFlags(self.target, &flags);
     if (success) {
-        NSError.threadError = nil;
+        NSError.nseThreadError = nil;
     } else {
-        NSError.threadError = (__bridge_transfer NSError *)SCCopyLastError();
+        NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
     return flags;
 }
