@@ -73,7 +73,7 @@
 
 @implementation SCECaptiveNetwork
 
-+ (instancetype)shared {
++ (instancetype)nseShared {
     static SCECaptiveNetwork *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

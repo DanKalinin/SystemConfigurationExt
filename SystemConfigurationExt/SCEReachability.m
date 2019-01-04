@@ -58,42 +58,6 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     }
 }
 
-- (NSString *)description {
-    SCNetworkReachabilityFlags flags = self.flags;
-    
-    NSMutableArray *descriptions = NSMutableArray.array;
-    
-    NSString *description = [NSString stringWithFormat:@"TransientConnection - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsTransientConnection)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"Reachable - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsReachable)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"ConnectionRequired - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionRequired)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"ConnectionOnTraffic - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionOnTraffic)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"InterventionRequired - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsInterventionRequired)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"ConnectionOnDemand - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionOnDemand)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"IsLocalAddress - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsLocalAddress)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"IsDirect - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsDirect)];
-    [descriptions addObject:description];
-    
-    description = [NSString stringWithFormat:@"IsWWAN - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsWWAN)];
-    [descriptions addObject:description];
-    
-    description = [descriptions componentsJoinedByString:@"\r\n"];
-    return description;
-}
-
 - (SCNetworkReachabilityFlags)flags {
     SCNetworkReachabilityFlags flags = 0;
     Boolean success = SCNetworkReachabilityGetFlags(self.object, &flags);
@@ -130,6 +94,42 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     } else {
         NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
+}
+
+- (NSString *)description {
+    SCNetworkReachabilityFlags flags = self.flags;
+    
+    NSMutableArray *descriptions = NSMutableArray.array;
+    
+    NSString *description = [NSString stringWithFormat:@"TransientConnection - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsTransientConnection)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"Reachable - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsReachable)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"ConnectionRequired - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionRequired)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"ConnectionOnTraffic - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionOnTraffic)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"InterventionRequired - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsInterventionRequired)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"ConnectionOnDemand - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsConnectionOnDemand)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"IsLocalAddress - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsLocalAddress)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"IsDirect - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsDirect)];
+    [descriptions addObject:description];
+    
+    description = [NSString stringWithFormat:@"IsWWAN - %i", (BOOL)(flags & kSCNetworkReachabilityFlagsIsWWAN)];
+    [descriptions addObject:description];
+    
+    description = [descriptions componentsJoinedByString:@"\r\n"];
+    return description;
 }
 
 - (SCEReachabilityStatus)status {
