@@ -24,7 +24,7 @@
 
 void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info) {
     SCEReachability *reachability = (__bridge SCEReachability *)info;
-    [reachability.delegates sceReachabilityDidUpdateFlags:reachability];
+    [reachability.delegates SCEReachabilityDidUpdateFlags:reachability];
 }
 
 @dynamic delegates;

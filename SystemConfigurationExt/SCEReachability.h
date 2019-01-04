@@ -11,14 +11,12 @@
 
 @class SCEReachability;
 
-@protocol SCEReachabilityDelegate;
-
 
 
 @protocol SCEReachabilityDelegate <NSEOperationDelegate>
 
 @optional
-- (void)sceReachabilityDidUpdateFlags:(SCEReachability *)reachability;
+- (void)SCEReachabilityDidUpdateFlags:(SCEReachability *)reachability;
 
 @end
 
