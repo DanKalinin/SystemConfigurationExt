@@ -20,14 +20,11 @@
 
 
 
-@interface SCENetworkInfo : HLPObject
+@interface SCENetworkInfo : NSEDictionaryObject
 
-@property (readonly) NSDictionary *dictionary;
 @property (readonly) NSData *ssidData;
 @property (readonly) NSString *ssid;
 @property (readonly) NSString *bssid;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
 

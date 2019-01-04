@@ -18,7 +18,6 @@
 
 @interface SCENetworkInfo ()
 
-@property NSDictionary *dictionary;
 @property NSData *ssidData;
 @property NSString *ssid;
 @property NSString *bssid;
@@ -30,14 +29,12 @@
 @implementation SCENetworkInfo
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = super.init;
-    if (self) {
-        self.dictionary = dictionary;
-        
-        self.ssidData = self.dictionary[(__bridge NSString *)kCNNetworkInfoKeySSIDData];
-        self.ssid = self.dictionary[(__bridge NSString *)kCNNetworkInfoKeySSID];
-        self.bssid = self.dictionary[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
-    }
+    self = [super initWithDictionary:dictionary];
+    
+    self.ssidData = dictionary[(__bridge NSString *)kCNNetworkInfoKeySSIDData];
+    self.ssid = dictionary[(__bridge NSString *)kCNNetworkInfoKeySSID];
+    self.bssid = dictionary[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
+    
     return self;
 }
 
@@ -91,8 +88,6 @@
         return nil;
     }
 }
-
-#pragma mark - Accessors
 
 - (NSArray<NSString *> *)supportedInterfaces {
     NSArray *interfaces = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
