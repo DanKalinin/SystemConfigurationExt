@@ -11,18 +11,20 @@
 
 @class SCEReachability;
 
+@protocol SCEReachabilityDelegate;
 
 
-@protocol SCEReachabilityDelegate <NSEOperationDelegate>
+
+@protocol SCEReachabilityDelegate <NSEObjectDelegate>
 
 @optional
-- (void)SCEReachabilityDidUpdateFlags:(SCEReachability *)reachability;
+- (void)sceReachabilityDidUpdateFlags:(SCEReachability *)reachability;
 
 @end
 
 
 
-@interface SCEReachability : NSEOperation <SCEReachabilityDelegate>
+@interface SCEReachability : NSECFObject <SCEReachabilityDelegate>
 
 extern void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info);
 
@@ -35,13 +37,11 @@ typedef NS_ENUM(NSUInteger, SCEReachabilityStatus) {
 @property (nonatomic) dispatch_queue_t dispatchQueue;
 
 @property (readonly) HLPArray<SCEReachabilityDelegate> *delegates;
-@property (readonly) SCNetworkReachabilityRef target;
 @property (readonly) NSString *nodename;
 @property (readonly) SCNetworkReachabilityContext context;
 @property (readonly) SCNetworkReachabilityFlags flags;
 @property (readonly) SCEReachabilityStatus status;
 
-- (instancetype)initWithTarget:(SCNetworkReachabilityRef)target;
 - (instancetype)initWithName:(NSString *)nodename;
 
 - (void)setCallback:(SCNetworkReachabilityCallBack)callout context:(SCNetworkReachabilityContext)context;
