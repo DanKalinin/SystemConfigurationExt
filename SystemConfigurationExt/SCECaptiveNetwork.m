@@ -79,6 +79,11 @@
     return shared;
 }
 
+- (NSArray<NSString *> *)supportedInterfaces {
+    NSArray *interfaces = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
+    return interfaces;
+}
+
 - (SCENetworkInfo *)currentNetworkInfo:(NSString *)interfaceName {
     NSDictionary *dictionary = (__bridge_transfer NSDictionary *)CNCopyCurrentNetworkInfo((__bridge CFStringRef)interfaceName);
     if (dictionary) {
@@ -87,11 +92,6 @@
     } else {
         return nil;
     }
-}
-
-- (NSArray<NSString *> *)supportedInterfaces {
-    NSArray *interfaces = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
-    return interfaces;
 }
 
 @end
