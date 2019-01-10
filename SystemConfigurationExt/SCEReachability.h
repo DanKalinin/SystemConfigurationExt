@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, SCEReachabilityStatus) {
 
 @property (nonatomic) dispatch_queue_t dispatchQueue;
 
-@property (readonly) HLPArray<SCEReachabilityDelegate> *delegates;
+@property (readonly) NSEOrderedSet<SCEReachabilityDelegate> *delegates;
 @property (readonly) NSString *nodename;
 @property (readonly) SCNetworkReachabilityContext context;
 @property (readonly) SCNetworkReachabilityFlags flags;
