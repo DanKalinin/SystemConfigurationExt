@@ -6,7 +6,7 @@
 //
 
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import <Helpers/Helpers.h>
+#import <FoundationExt/FoundationExt.h>
 
 @class SCENetworkInfo;
 @class SCECaptiveNetwork;

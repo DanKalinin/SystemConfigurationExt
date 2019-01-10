@@ -7,7 +7,7 @@
 //
 
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <Helpers/Helpers.h>
+#import <FoundationExt/FoundationExt.h>
 
 @class SCEReachability;
 
