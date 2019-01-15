@@ -106,16 +106,18 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
 }
 
 - (SCEReachabilityStatus)status {
+    SCEReachabilityStatus status = SCEReachabilityStatusNone;
+    
     SCNetworkReachabilityFlags flags = self.flags;
     if ((flags & kSCNetworkReachabilityFlagsReachable) && !(flags & kSCNetworkReachabilityFlagsConnectionRequired) && !(flags & kSCNetworkReachabilityFlagsInterventionRequired)) {
         if (flags & kSCNetworkReachabilityFlagsIsWWAN) {
-            return SCEReachabilityStatusWWAN;
+            status = SCEReachabilityStatusWWAN;
         } else {
-            return SCEReachabilityStatusWiFi;
+            status = SCEReachabilityStatusWiFi;
         }
-    } else {
-        return SCEReachabilityStatusNone;
     }
+    
+    return status;
 }
 
 - (void)setCallback:(SCNetworkReachabilityCallBack)callout context:(SCNetworkReachabilityContext)context {
