@@ -96,12 +96,14 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
 
 - (SCNetworkReachabilityFlags)flags {
     SCNetworkReachabilityFlags flags = 0;
+    
     Boolean success = SCNetworkReachabilityGetFlags(self.object, &flags);
     if (success) {
         NSError.nseThreadError = nil;
     } else {
         NSError.nseThreadError = (__bridge_transfer NSError *)SCCopyLastError();
     }
+    
     return flags;
 }
 
