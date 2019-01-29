@@ -24,7 +24,7 @@
 
 
 
-@interface SCEReachability : NSECFObject <SCEReachabilityDelegate>
+@interface SCEReachability : NSECFObjectOperation <SCEReachabilityDelegate>
 
 extern void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info);
 
