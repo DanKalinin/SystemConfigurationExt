@@ -153,7 +153,7 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     [self setCallback:SCEReachabilityCallBack context:self.context];
     if (NSThread.currentThread.nseOperation.lastError) {
     } else {
-        [self scheduleWithRunLoop:self.loop runLoopMode:NSDefaultRunLoopMode];
+        [self scheduleWithRunLoop:NSRunLoop.currentRunLoop runLoopMode:NSDefaultRunLoopMode];
     }
 }
 
@@ -161,7 +161,7 @@ void SCEReachabilityCallBack(SCNetworkReachabilityRef target, SCNetworkReachabil
     [self setCallback:NULL context:self.context];
     if (NSThread.currentThread.nseOperation.lastError) {
     } else {
-        [self unscheduleFromRunLoop:self.loop runLoopMode:NSDefaultRunLoopMode];
+        [self unscheduleFromRunLoop:NSRunLoop.currentRunLoop runLoopMode:NSDefaultRunLoopMode];
     }
 }
 
